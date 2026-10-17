@@ -1,0 +1,19 @@
+# Simulation and temporary outputs
+*.out
+*.vcd
+*.log
+*.tmp
+*.swp
+*~
+
+# Python
+__pycache__/
+*.pyc
+
+# Keep selected project evidence/artifacts even if generated during runs.
+!tb/washing_machine.vcd
+!sim/washing_machine.vcd
+!logs/
+!report/
+!gds/
+!physical_design/

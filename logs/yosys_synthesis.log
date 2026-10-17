@@ -1,0 +1,692 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2024  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.47+121 (git sha1 98b4affc4, g++ 13.2.0-23ubuntu4 -fPIC -O3)
+
+-- Running command `read_verilog rtl/washing_machine_controller.v; hierarchy -top washing_machine_controller; synth -top washing_machine_controller; check; stat; write_verilog synth/washing_machine_synth.v' --
+
+1. Executing Verilog-2005 frontend: rtl/washing_machine_controller.v
+Parsing Verilog input from `rtl/washing_machine_controller.v' to AST representation.
+Generating RTLIL representation for module `\washing_machine_controller'.
+Successfully finished Verilog frontend.
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \washing_machine_controller
+
+2.2. Analyzing design hierarchy..
+Top module:  \washing_machine_controller
+Removed 0 unused modules.
+
+3. Executing SYNTH pass.
+
+3.1. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1.1. Analyzing design hierarchy..
+Top module:  \washing_machine_controller
+
+3.1.2. Analyzing design hierarchy..
+Top module:  \washing_machine_controller
+Removed 0 unused modules.
+
+3.2. Executing PROC pass (convert processes to netlists).
+
+3.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$rtl/washing_machine_controller.v:83$9 in module washing_machine_controller.
+Marked 5 switch rules as full_case in process $proc$rtl/washing_machine_controller.v:28$1 in module washing_machine_controller.
+Removed a total of 0 dead cases.
+
+3.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 1 redundant assignment.
+Promoted 4 assignments to connections.
+
+3.2.4. Executing PROC_INIT pass (extract init attributes).
+
+3.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~7 debug messages>
+
+3.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\washing_machine_controller.$proc$rtl/washing_machine_controller.v:83$9'.
+     1/4: $1\wash_en[0:0]
+     2/4: $1\done[0:0]
+     3/4: $1\spin_en[0:0]
+     4/4: $1\rinse_en[0:0]
+Creating decoders for process `\washing_machine_controller.$proc$rtl/washing_machine_controller.v:28$1'.
+     1/2: $0\timer_count[2:0]
+     2/2: $0\state[2:0]
+
+3.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\washing_machine_controller.\wash_en' from process `\washing_machine_controller.$proc$rtl/washing_machine_controller.v:83$9'.
+No latch inferred for signal `\washing_machine_controller.\rinse_en' from process `\washing_machine_controller.$proc$rtl/washing_machine_controller.v:83$9'.
+No latch inferred for signal `\washing_machine_controller.\spin_en' from process `\washing_machine_controller.$proc$rtl/washing_machine_controller.v:83$9'.
+No latch inferred for signal `\washing_machine_controller.\done' from process `\washing_machine_controller.$proc$rtl/washing_machine_controller.v:83$9'.
+
+3.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\washing_machine_controller.\state' using process `\washing_machine_controller.$proc$rtl/washing_machine_controller.v:28$1'.
+  created $dff cell `$procdff$67' with positive edge clock.
+Creating register for signal `\washing_machine_controller.\timer_count' using process `\washing_machine_controller.$proc$rtl/washing_machine_controller.v:28$1'.
+  created $dff cell `$procdff$68' with positive edge clock.
+
+3.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\washing_machine_controller.$proc$rtl/washing_machine_controller.v:83$9'.
+Removing empty process `washing_machine_controller.$proc$rtl/washing_machine_controller.v:83$9'.
+Found and cleaned up 6 empty switches in `\washing_machine_controller.$proc$rtl/washing_machine_controller.v:28$1'.
+Removing empty process `washing_machine_controller.$proc$rtl/washing_machine_controller.v:28$1'.
+Cleaned up 7 empty switches.
+
+3.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+<suppressed ~3 debug messages>
+
+3.3. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+
+3.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+Removed 1 unused cells and 24 unused wires.
+<suppressed ~2 debug messages>
+
+3.5. Executing CHECK pass (checking for obvious problems).
+Checking module washing_machine_controller...
+Found and reported 0 problems.
+
+3.6. Executing OPT pass (performing simple optimizations).
+
+3.6.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+
+3.6.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+<suppressed ~24 debug messages>
+Removed a total of 8 cells.
+
+3.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \washing_machine_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+3.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \washing_machine_controller.
+Performed a total of 0 changes.
+
+3.6.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+Removed a total of 0 cells.
+
+3.6.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+Removed 0 unused cells and 8 unused wires.
+<suppressed ~1 debug messages>
+
+3.6.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+
+3.6.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.6.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \washing_machine_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+3.6.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \washing_machine_controller.
+Performed a total of 0 changes.
+
+3.6.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+Removed a total of 0 cells.
+
+3.6.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.6.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+
+3.6.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+
+3.6.16. Finished OPT passes. (There is nothing left to do.)
+
+3.7. Executing FSM pass (extract and optimize FSM).
+
+3.7.1. Executing FSM_DETECT pass (finding FSMs in design).
+Found FSM state register washing_machine_controller.state.
+
+3.7.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+Extracting FSM `\state' from module `\washing_machine_controller'.
+  found $dff cell for state register: $procdff$67
+  root of input selection tree: $0\state[2:0]
+  found reset state: 3'000 (guessed from mux tree)
+  found ctrl input: \rst_n
+  found state code: 3'000
+  found ctrl input: $procmux$22_CMP
+  found ctrl input: $procmux$27_CMP
+  found ctrl input: $procmux$15_CMP
+  found ctrl input: $procmux$63_CMP
+  found ctrl input: $eq$rtl/washing_machine_controller.v:60$7_Y
+  found state code: 3'100
+  found ctrl input: $eq$rtl/washing_machine_controller.v:51$5_Y
+  found state code: 3'011
+  found ctrl input: $eq$rtl/washing_machine_controller.v:42$3_Y
+  found state code: 3'010
+  found ctrl input: \start
+  found state code: 3'001
+  found ctrl output: $procmux$15_CMP
+  found ctrl output: $procmux$18_CMP
+  found ctrl output: $procmux$22_CMP
+  found ctrl output: $procmux$27_CMP
+  found ctrl output: $procmux$63_CMP
+  ctrl inputs: { $eq$rtl/washing_machine_controller.v:60$7_Y $eq$rtl/washing_machine_controller.v:51$5_Y $eq$rtl/washing_machine_controller.v:42$3_Y \start \rst_n }
+  ctrl outputs: { $procmux$63_CMP $procmux$27_CMP $procmux$22_CMP $procmux$18_CMP $procmux$15_CMP $0\state[2:0] }
+  transition:      3'000 5'----0 ->      3'000 8'10000000
+  transition:      3'000 5'---01 ->      3'000 8'10000000
+  transition:      3'000 5'---11 ->      3'001 8'10000001
+  transition:      3'100 5'----0 ->      3'000 8'00010000
+  transition:      3'100 5'----1 ->      3'000 8'00010000
+  transition:      3'010 5'----0 ->      3'000 8'01000000
+  transition:      3'010 5'-0--1 ->      3'010 8'01000010
+  transition:      3'010 5'-1--1 ->      3'011 8'01000011
+  transition:      3'001 5'----0 ->      3'000 8'00001000
+  transition:      3'001 5'--0-1 ->      3'001 8'00001001
+  transition:      3'001 5'--1-1 ->      3'010 8'00001010
+  transition:      3'011 5'----0 ->      3'000 8'00100000
+  transition:      3'011 5'0---1 ->      3'011 8'00100011
+  transition:      3'011 5'1---1 ->      3'100 8'00100100
+
+3.7.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$69' from module `\washing_machine_controller'.
+  Merging pattern 5'----0 and 5'----1 from group (1 0 8'00010000).
+  Merging pattern 5'----1 and 5'----0 from group (1 0 8'00010000).
+
+3.7.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+Removed 12 unused cells and 12 unused wires.
+<suppressed ~13 debug messages>
+
+3.7.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+Optimizing FSM `$fsm$\state$69' from module `\washing_machine_controller'.
+  Removing unused output signal $0\state[2:0] [0].
+  Removing unused output signal $0\state[2:0] [1].
+  Removing unused output signal $0\state[2:0] [2].
+  Removing unused output signal $procmux$63_CMP.
+
+3.7.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+Recoding FSM `$fsm$\state$69' from module `\washing_machine_controller' using `auto' encoding:
+  mapping auto encoding to `one-hot` for this FSM.
+  000 -> ----1
+  100 -> ---1-
+  010 -> --1--
+  001 -> -1---
+  011 -> 1----
+
+3.7.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+FSM `$fsm$\state$69' from module `washing_machine_controller':
+-------------------------------------
+
+  Information on FSM $fsm$\state$69 (\state):
+
+  Number of input signals:    5
+  Number of output signals:   4
+  Number of state bits:       5
+
+  Input signals:
+    0: \rst_n
+    1: \start
+    2: $eq$rtl/washing_machine_controller.v:42$3_Y
+    3: $eq$rtl/washing_machine_controller.v:51$5_Y
+    4: $eq$rtl/washing_machine_controller.v:60$7_Y
+
+  Output signals:
+    0: $procmux$15_CMP
+    1: $procmux$18_CMP
+    2: $procmux$22_CMP
+    3: $procmux$27_CMP
+
+  State encoding:
+    0:    5'----1  <RESET STATE>
+    1:    5'---1-
+    2:    5'--1--
+    3:    5'-1---
+    4:    5'1----
+
+  Transition Table (state_in, ctrl_in, state_out, ctrl_out):
+      0:     0 5'----0   ->     0 4'0000
+      1:     0 5'---01   ->     0 4'0000
+      2:     0 5'---11   ->     3 4'0000
+      3:     1 5'-----   ->     0 4'0010
+      4:     2 5'----0   ->     0 4'1000
+      5:     2 5'-0--1   ->     2 4'1000
+      6:     2 5'-1--1   ->     4 4'1000
+      7:     3 5'----0   ->     0 4'0001
+      8:     3 5'--1-1   ->     2 4'0001
+      9:     3 5'--0-1   ->     3 4'0001
+     10:     4 5'----0   ->     0 4'0100
+     11:     4 5'1---1   ->     1 4'0100
+     12:     4 5'0---1   ->     4 4'0100
+
+-------------------------------------
+
+3.7.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+Mapping FSM `$fsm$\state$69' from module `\washing_machine_controller'.
+
+3.8. Executing OPT pass (performing simple optimizations).
+
+3.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+<suppressed ~1 debug messages>
+
+3.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+Removed a total of 0 cells.
+
+3.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \washing_machine_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+3.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \washing_machine_controller.
+Performed a total of 0 changes.
+
+3.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+Removed a total of 0 cells.
+
+3.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$68 ($dff) from module washing_machine_controller (D = $procmux$33_Y, Q = \timer_count, rval = 3'000).
+
+3.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+Removed 1 unused cells and 9 unused wires.
+<suppressed ~2 debug messages>
+
+3.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+
+3.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+3.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \washing_machine_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+3.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \washing_machine_controller.
+Performed a total of 0 changes.
+
+3.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+Removed a total of 0 cells.
+
+3.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+
+3.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+
+3.8.16. Finished OPT passes. (There is nothing left to do.)
+
+3.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 3) from port B of cell washing_machine_controller.$eq$rtl/washing_machine_controller.v:51$5 ($eq).
+Removed top 1 bits (of 3) from port B of cell washing_machine_controller.$eq$rtl/washing_machine_controller.v:60$7 ($eq).
+Removed top 1 bits (of 2) from port B of cell washing_machine_controller.$auto$fsm_map.cc:77:implement_pattern_cache$96 ($eq).
+Removed top 1 bits (of 2) from port B of cell washing_machine_controller.$auto$fsm_map.cc:77:implement_pattern_cache$105 ($eq).
+Removed top 1 bits (of 2) from port B of cell washing_machine_controller.$auto$fsm_map.cc:77:implement_pattern_cache$114 ($eq).
+Removed top 1 bits (of 2) from port B of cell washing_machine_controller.$auto$fsm_map.cc:77:implement_pattern_cache$83 ($eq).
+
+3.10. Executing PEEPOPT pass (run peephole optimizers).
+
+3.11. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+
+3.12. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module washing_machine_controller:
+  creating $macc model for $add$rtl/washing_machine_controller.v:46$4 ($add).
+  creating $alu model for $macc $add$rtl/washing_machine_controller.v:46$4.
+  creating $alu cell for $add$rtl/washing_machine_controller.v:46$4: $auto$alumacc.cc:485:replace_alu$119
+  created 1 $alu and 0 $macc cells.
+
+3.13. Executing SHARE pass (SAT-based resource sharing).
+
+3.14. Executing OPT pass (performing simple optimizations).
+
+3.14.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+
+3.14.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+Removed a total of 0 cells.
+
+3.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \washing_machine_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+3.14.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \washing_machine_controller.
+Performed a total of 0 changes.
+
+3.14.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+Removed a total of 0 cells.
+
+3.14.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.14.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+
+3.14.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+
+3.14.9. Finished OPT passes. (There is nothing left to do.)
+
+3.15. Executing MEMORY pass.
+
+3.15.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+3.15.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+3.15.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+3.15.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+3.15.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+3.15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+
+3.15.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+3.15.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+3.15.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+
+3.15.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+3.16. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+
+3.17. Executing OPT pass (performing simple optimizations).
+
+3.17.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+<suppressed ~4 debug messages>
+
+3.17.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+Removed a total of 0 cells.
+
+3.17.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.17.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+
+3.17.5. Finished fast OPT passes.
+
+3.18. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+3.19. Executing OPT pass (performing simple optimizations).
+
+3.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+
+3.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+Removed a total of 0 cells.
+
+3.19.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \washing_machine_controller..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~1 debug messages>
+
+3.19.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \washing_machine_controller.
+Performed a total of 0 changes.
+
+3.19.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+Removed a total of 0 cells.
+
+3.19.6. Executing OPT_SHARE pass.
+
+3.19.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.19.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+
+3.19.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+
+3.19.10. Finished OPT passes. (There is nothing left to do.)
+
+3.20. Executing TECHMAP pass (map to technology primitives).
+
+3.20.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+3.20.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_90_alu for cells of type $alu.
+Using template $paramod$85df5dc01c7df96a7d8e5f1fdf76ce9ac452af63\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $or.
+No more expansions possible.
+<suppressed ~266 debug messages>
+
+3.21. Executing OPT pass (performing simple optimizations).
+
+3.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+<suppressed ~52 debug messages>
+
+3.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+<suppressed ~39 debug messages>
+Removed a total of 13 cells.
+
+3.21.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+Removed 1 unused cells and 88 unused wires.
+<suppressed ~2 debug messages>
+
+3.21.5. Finished fast OPT passes.
+
+3.22. Executing ABC pass (technology mapping using ABC).
+
+3.22.1. Extracting gate netlist of module `\washing_machine_controller' to `<abc-temp-dir>/input.blif'..
+Extracted 75 gates and 86 wires to a netlist network with 10 inputs and 8 outputs.
+
+3.22.1.1. Executing ABC.
+Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+3.22.1.2. Re-integrating ABC results.
+ABC RESULTS:             ORNOT cells:        2
+ABC RESULTS:               AND cells:        2
+ABC RESULTS:               NOT cells:        3
+ABC RESULTS:              XNOR cells:        1
+ABC RESULTS:               XOR cells:        1
+ABC RESULTS:                OR cells:       24
+ABC RESULTS:              NAND cells:        4
+ABC RESULTS:            ANDNOT cells:       24
+ABC RESULTS:        internal signals:       68
+ABC RESULTS:           input signals:       10
+ABC RESULTS:          output signals:        8
+Removing temp directory.
+
+3.23. Executing OPT pass (performing simple optimizations).
+
+3.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module washing_machine_controller.
+
+3.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\washing_machine_controller'.
+Removed a total of 0 cells.
+
+3.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+3.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \washing_machine_controller..
+Removed 0 unused cells and 63 unused wires.
+<suppressed ~1 debug messages>
+
+3.23.5. Finished fast OPT passes.
+
+3.24. Executing HIERARCHY pass (managing design hierarchy).
+
+3.24.1. Analyzing design hierarchy..
+Top module:  \washing_machine_controller
+
+3.24.2. Analyzing design hierarchy..
+Top module:  \washing_machine_controller
+Removed 0 unused modules.
+
+3.25. Printing statistics.
+
+=== washing_machine_controller ===
+
+   Number of wires:                 68
+   Number of wire bits:             76
+   Number of public wires:           9
+   Number of public wire bits:      15
+   Number of ports:                  7
+   Number of port bits:              7
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 69
+     $_ANDNOT_                      24
+     $_AND_                          2
+     $_DFF_P_                        5
+     $_NAND_                         4
+     $_NOT_                          3
+     $_ORNOT_                        2
+     $_OR_                          24
+     $_SDFF_PN0_                     3
+     $_XNOR_                         1
+     $_XOR_                          1
+
+3.26. Executing CHECK pass (checking for obvious problems).
+Checking module washing_machine_controller...
+Found and reported 0 problems.
+
+4. Executing CHECK pass (checking for obvious problems).
+Checking module washing_machine_controller...
+Found and reported 0 problems.
+
+5. Printing statistics.
+
+=== washing_machine_controller ===
+
+   Number of wires:                 68
+   Number of wire bits:             76
+   Number of public wires:           9
+   Number of public wire bits:      15
+   Number of ports:                  7
+   Number of port bits:              7
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 69
+     $_ANDNOT_                      24
+     $_AND_                          2
+     $_DFF_P_                        5
+     $_NAND_                         4
+     $_NOT_                          3
+     $_ORNOT_                        2
+     $_OR_                          24
+     $_SDFF_PN0_                     3
+     $_XNOR_                         1
+     $_XOR_                          1
+
+6. Executing Verilog backend.
+
+6.1. Executing BMUXMAP pass.
+
+6.2. Executing DEMUXMAP pass.
+Dumping module `\washing_machine_controller'.
+
+End of script. Logfile hash: 3baf7a0da3, CPU: user 0.01s system 0.06s, MEM: 20.62 MB peak
+Yosys 0.47+121 (git sha1 98b4affc4, g++ 13.2.0-23ubuntu4 -fPIC -O3)
+Time spent: 50% 1x abc (0 sec), 13% 17x opt_expr (0 sec), ...

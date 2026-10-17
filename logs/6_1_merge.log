@@ -1,0 +1,6 @@
+KLayout 0.28.16
+[INFO] Reporting cells prior to loading DEF ...
+	/home/vsduser/OpenROAD-flow-scripts/flow/platforms/sky130hd/gds/sky130_fd_sc_hd.gds
+[INFO] All LEF cells have matching GDS/OAS cells
+[INFO] No orphan cells in the final layout
+Elapsed time: 0:03.18[h:]min:sec. CPU time: user 0.73 sys 0.96 (53%). Peak memory: 375496KB.
